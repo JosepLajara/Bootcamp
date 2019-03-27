@@ -1,9 +1,8 @@
 package com.nunsys.bootcamp.Prueba.DB.JPA.webrest;
 
 import com.nunsys.bootcamp.Prueba.DB.JPA.domain.Pocion;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.nunsys.bootcamp.Prueba.DB.JPA.service.IPocionService;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,18 +11,19 @@ import java.util.List;
 @RequestMapping("/api")
 
 public class PocionResource {
-    @GetMapping("/pociones")
-    public List<Pocion> getAllPociones(){
-        List<Pocion> pociones = new ArrayList<>();
+    private IPocionService iPocionService;
 
-        pociones=creaPociones();
-        return pociones;
+    public PocionResource(IPocionService iPocionService){
+        this.iPocionService = iPocionService;
     }
 
-    public List<Pocion> creaPociones(){
-        List<Pocion> pociones = new ArrayList<>();
-        pociones.add(new Pocion("Poción de vida","Poción que recupera 25hp","../../resources/static/t_01.PNG" ,false ));
-        pociones.add(new Pocion("Poción de maná","Poción que recupera 10mp","../../resources/static/t_02.PNG" ,false ));
-        return pociones;
+    @GetMapping("/pociones")
+    public List<Pocion> getAllPociones(){
+        return iPocionService.findAll();
+    }
+    @PostMapping("/pociones")
+    public void creaPociones(@RequestBody Pocion pocion){
+        //Pocion p=new Pocion("Pocion de vida", "recupera vida jejeej", "",true);
+        iPocionService.save(pocion);
     }
 }
