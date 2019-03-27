@@ -41,4 +41,9 @@ public class PocionResource {
         iPocionService.deleteById(id);
     }
 
+    @GetMapping("/pociones/findEpic")
+    public List<Pocion> findByEsEpica() {
+        return iPocionService.findByEsEpica(true);
+    }
+
 }
