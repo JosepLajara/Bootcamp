@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -21,9 +22,23 @@ public class PocionResource {
     public List<Pocion> getAllPociones(){
         return iPocionService.findAll();
     }
-    @PostMapping("/pociones")
+    @GetMapping("/pociones/pocion/{id}")
+    public Optional<Pocion> getPocionById(@PathVariable Long id){
+        return  iPocionService.findById(id);
+    }
+
+    @PostMapping("/pociones/create")
     public void creaPociones(@RequestBody Pocion pocion){
-        //Pocion p=new Pocion("Pocion de vida", "recupera vida jejeej", "",true);
         iPocionService.save(pocion);
     }
+    @PutMapping("/pociones/update")
+    public void modificaPocion(@RequestBody Pocion nuevaPocion){
+        iPocionService.save(nuevaPocion);
+    }
+
+    @DeleteMapping("/pociones/delete/{id}")
+    public void borraPocion(@PathVariable Long id) {
+        iPocionService.deleteById(id);
+    }
+
 }
