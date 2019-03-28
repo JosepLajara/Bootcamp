@@ -11,15 +11,14 @@
   </thead>
   <tbody>
     <tr *ngFor="let pocion of pociones">
-      <td><img src="../../../../assets/img/logo.png" alt=""></td>
+      <td><img [src]="pocion.imagen" alt=""></td>
       <th scope="row">{{pocion.titulo}}</th>
       <td *ngIf="botones">{{pocion.id}}</td>
       <td *ngIf="botones">{{pocion.descripcion}}</td>
       <td><img *ngIf="pocion.esEpica" src="../../../../assets/img/logo.png" alt=""></td>
       <td *ngIf="botones">
         <button routerLink="/pocionDetalle/{{pocion.id}}" type="button" class="btn btn-success mr-1">Ver</button>
-        <button type="button" class="btn btn-warning mr-1">Editar</button>
-        <button type="button" class="btn btn-danger mr-1">Eliminar</button>
+        <button routerLink="/pocionForm/{{pocion.id}}" type="button" class="btn btn-warning mr-1">Editar</button>
       </td>
     </tr>
   </tbody>

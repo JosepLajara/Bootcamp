@@ -2,6 +2,6 @@ export class Pocion {
     id: Number;
     titulo: String;
     descripcion: String;
-    imagen: string | ArrayBuffer;
+    imagen: String | ArrayBuffer;
     esEpica: Boolean;
 }

@@ -15,6 +15,7 @@ export class PocionFormComponent implements OnInit {
 
   constructor(private _pocionService: PocionService) {
     this.pocion = { id: 0, titulo: '', descripcion: '', imagen: '', esEpica: false };
+    
   }
 
   ngOnInit() {
@@ -22,8 +23,11 @@ export class PocionFormComponent implements OnInit {
   }
 
   crearPocion() {
-    this.pocion.imagen = this.imgURL;
-    this._pocionService.insertarPocion(this.pocion).subscribe(
+    if (this.imgURL) {
+      this.pocion.imagen = this.imgURL;
+    }
+    
+    this._pocionService.insertPocion(this.pocion).subscribe(
       result => {
 
         if (result.code != 200) {
@@ -40,25 +44,29 @@ export class PocionFormComponent implements OnInit {
   }
 
   preview(files) {
-
+    console.log("1");
     if (files.length === 0) {
       return;
     }
 
     const mimeType = files[0].type;
-
+    console.log("2");
     if (mimeType.match(/image\/*/) == null) {
       return;
     }
-
+    console.log("3");
     const reader = new FileReader();
     this.imagePath = files;
 
     reader.readAsDataURL(files[0]);
-
+    console.log("4");
     reader.onload = (_event) => {
       this.imgURL = reader.result;
     };
+    console.log("5");
+  }
 
+  eliminarPocion(){
+    this._pocionService.deletePocion(''+this.pocion.id);
   }
 }

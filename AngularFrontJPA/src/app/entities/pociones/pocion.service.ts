@@ -20,11 +20,11 @@ export class PocionService {
     return this.http.get<Pocion>(this.url + 'pocion/' + id);
   }
 
-  insertarPocion(pocion: Pocion): Observable<any> {
+  insertPocion(pocion: Pocion): Observable<any> {
     return this.http.post<Pocion>(this.url+'pocion', pocion);
   }
 
-  deletePocion(id: String){
-    this.http.delete(this.url + 'pocion/' + id);
+  deletePocion(id: String): Observable<any>{
+    return this.http.delete(this.url + 'pocion/' + id);
   }
 }
