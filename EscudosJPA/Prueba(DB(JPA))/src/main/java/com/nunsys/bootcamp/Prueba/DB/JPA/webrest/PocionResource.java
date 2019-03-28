@@ -4,7 +4,6 @@ import com.nunsys.bootcamp.Prueba.DB.JPA.domain.Pocion;
 import com.nunsys.bootcamp.Prueba.DB.JPA.service.IPocionService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,17 +27,20 @@ public class PocionResource {
     }
 
     @PostMapping("/pociones/create")
-    public void creaPociones(@RequestBody Pocion pocion){
+    public Optional<String> creaPociones(@RequestBody Pocion pocion){
         iPocionService.save(pocion);
+        return iPocionService.mensaje_create;
     }
     @PutMapping("/pociones/update")
-    public void modificaPocion(@RequestBody Pocion nuevaPocion){
+    public Optional<String> modificaPocion(@RequestBody Pocion nuevaPocion){
         iPocionService.save(nuevaPocion);
+        return IPocionService.mensaje_update;
     }
 
     @DeleteMapping("/pociones/delete/{id}")
-    public void borraPocion(@PathVariable Long id) {
+    public Optional<String> borraPocion(@PathVariable Long id) {
         iPocionService.deleteById(id);
+        return iPocionService.mensaje_delete;
     }
 
     @GetMapping("/pociones/findEpic")

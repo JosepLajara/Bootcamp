@@ -1,3 +1,26 @@
-<p>
-  pocion-grid works!
-</p>
+<table class="table ">
+  <thead>
+    <tr class="bg-success">
+      <th scope="col" >Id</th>
+      <td scope="col" ><b>Imagen</b></td>
+      <th scope="col">Nombre</th>
+      <th scope="col" *ngIf="botones">Descripción</th>
+      <th scope="col">Epica</th>
+      <th scope="col" *ngIf="botones">Acciones</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let pocion of pociones">
+    <tr>
+      <th>{{pocion.id}}</th>
+      <td><img class="img_pocion ml-4" src="http://localhost:8080/api/pocion/{{pocion.id}}/getImagenPocion" alt="Imagen de la pocion"></td>
+      <td>{{pocion.titulo | uppercase}}</td>
+      <td *ngIf="botones">{{pocion.descripcion | titlecase}}</td>
+      <td *ngIf="pocion.epic; else elseBlock"><img class="epic_nonepic" src="../../../../assets/img/pocion_epica.jfif" alt="Imagen de pocion epica"></td>
+      <ng-template #elseBlock> <img class="epic_nonepic img-responsive" src="../../../../assets/img/pocion_normal.jfif" alt="Imagen de pocion normal"> </ng-template>
+      <td *ngIf="botones">
+        <button routerLink="/pocion/{{pocion.id}}" type="button" class="btn btn-success mr-2">View</button>
+        <button routerLink="/crear/{{pocion.id}}" type="button" class="btn btn-success mr-2">Edit</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

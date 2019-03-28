@@ -1,4 +1,4 @@
-package com.nunsys.bootcamp.testrest01.Config;
+package com.nunsys.bootcamp.Prueba.DB.JPA.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +13,7 @@ public class corsConfigurer {
 
     @Bean
     public WebMvcConfigurer corsConfiguration() {
-        return new WebMvcConfigurerAdapter() {
+        return new WebMvcConfigurer() {
 
             @Override
             public void addCorsMappings(CorsRegistry registry) {

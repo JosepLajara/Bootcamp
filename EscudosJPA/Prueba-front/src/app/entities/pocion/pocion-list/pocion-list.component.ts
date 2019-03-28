@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PocionService } from '../pocion.service';
+import { Pocion } from '../pocion';
 
 @Component({
   selector: 'app-pocion-list',
@@ -7,9 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PocionListComponent implements OnInit {
 
-  constructor() { }
+pocion: Pocion[];
+  
+  constructor(private route: ActivatedRoute, private _pocionService: PocionService, public router: Router) { }
 
   ngOnInit() {
+    this.obtenerPociones();
   }
 
+  private refresh(){
+    location.reload();
+  }
+
+  private obtenerPociones(){
+    this._pocionService.getPociones().subscribe(
+      (pocion) => {
+        this.pocion=pocion;
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+  }
+
+
+  
 }
