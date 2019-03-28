@@ -28,7 +28,7 @@ public class PocionResource {
     }
 
     @PutMapping("/pocion")
-    public Pocion updatePOcion(@RequestBody Pocion pocion){
+    public Pocion updatePocion(@RequestBody Pocion pocion){
         return this.iPocionService.save(pocion);
     }
 

@@ -1,0 +1,26 @@
+<table class="table table-striped">
+  <thead>
+    <tr class="table-success">
+      <th scope="col"></th>
+      <th scope="col">Nombre</th>
+      <th scope="col" *ngIf="botones">ID</th>
+      <th scope="col" *ngIf="botones">Descripción</th>
+      <th scope="col">Épica</th>
+      <th scope="col" *ngIf="botones"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pocion of pociones">
+      <td><img src="../../../../assets/img/logo.png" alt=""></td>
+      <th scope="row">{{pocion.titulo}}</th>
+      <td *ngIf="botones">{{pocion.id}}</td>
+      <td *ngIf="botones">{{pocion.descripcion}}</td>
+      <td><img *ngIf="pocion.esEpica" src="../../../../assets/img/logo.png" alt=""></td>
+      <td *ngIf="botones">
+        <button routerLink="/pocionDetalle/{{pocion.id}}" type="button" class="btn btn-success mr-1">Ver</button>
+        <button type="button" class="btn btn-warning mr-1">Editar</button>
+        <button type="button" class="btn btn-danger mr-1">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

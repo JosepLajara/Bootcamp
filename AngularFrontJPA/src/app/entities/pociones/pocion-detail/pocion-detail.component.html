@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row w-100 info_card h-100">
+    <div class="jumbotron jumbotron-fluid w-100">
+      <div class="row">
+        <div class="col-md-3 ml-5 img_info">
+          <h3 class="mb-4 text-center">{{pocion.nombre}}</h3>
+          <img src="{{pocion.imagen}}" alt="imagen de la poción">
+          <img *ngIf="pocion.esEpica" src="../../../../assets/img/logo.png" alt="" class="esEpica">
+        </div>
+        <div class="col-md-8 ml-1">
+          {{pocion.descripcion}}
+        </div>
+      </div>
+      <div class="row">
+        <a routerLink="/pociones" class="btn btn-success boton_volver">Volver</a>
+      </div>
+    </div>
+  </div>
+</div>

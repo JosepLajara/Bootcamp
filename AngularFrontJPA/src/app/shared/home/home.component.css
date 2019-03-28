@@ -1,0 +1,7 @@
+.tabla{
+    position: absolute;
+    top: 5em;
+    right: 5em;
+    background-color: white;
+    border-radius: 2em;
+}
